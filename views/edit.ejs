@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    
+    <div class="container">
+      <div class="row">
+          <div id="signupbox" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+              <div class="panel panel-info">
+                  <div class="panel-heading">
+                      <div class="panel-title"><%= title %></div>
+                  </div>  
+                  <div class="panel-body" >
+                      <form action="/update" id="EmployeeForm" class="form-horizontal" method="post" enctype="multipart/form-data">
+                          <div id="signupalert" style="display:none" class="alert alert-danger">
+                            <input type="hidden" name="id" value="<%= records._id %>">
+                              <p>Error:</p>
+                              <span></span>
+                          </div>
+  
+                          <div class="form-group">
+                              <label for="firstname" class="col-md-3 control-label">Name</label>
+                              <div class="col-md-9">
+                                  <input type="text" class="form-control" name="uname" value="<%= records.name %>" placeholder="Enter Your Name">
+                              </div>
+                          </div>
+                            
+                          <div class="form-group">
+                              <label for="email" class="col-md-3 control-label">Email</label>
+                              <div class="col-md-9">
+                                  <input type="text" class="form-control" name="email" value="<%= records.email %>" placeholder="Email Address">
+                              </div>
+                          </div>
+                              
+                          <div class="form-group">
+                              <label for="emptype" class="col-md-3 control-label">Employee Type</label>
+                              <div class="col-md-9">
+                                <select class="form-control" name="emptype">
+                                  <option value="Hourly" <% if(records.etype == "Hourly"){ %> selected <% } %> >Hourly</option>
+                                  <option value="Fixed" <% if(records.etype == "Fixed"){ %> selected <% } %>>Fixed</option>
+                                </select>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="hrlyrate" class="col-md-3 control-label">Hourly Rate</label>
+                              <div class="col-md-9">
+                                  <input type="number" class="form-control" name="hrlyrate" value="<%= records.hourlyRate %>" placeholder="Enter Hourly Rate">
+                              </div>
+                          </div>
+                              
+                          <div class="form-group">
+                              <label for="ttlhr" class="col-md-3 control-label"> Total Hour</label>
+                              <div class="col-md-9">
+                                  <input type="number" class="form-control" name="ttlhr" value="<%= records.totalHour %>" placeholder="Enter Total Hours">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="file" class="col-md-3 control-label"> Profile Image</label>
+                              <div class="col-md-9">
+                                  <input type="file" class="form-control" name="file">
+                              </div>
+                              <% if(records.image){ %>
+                                <img src="/uploads/<%= records.image %>" alt="image" width="80"><% } %>
+                              
+                          </div>
+  
+                          <div class="form-group">
+                              <!-- Button -->                                        
+                              <div class="col-md-offset-3 col-md-9">
+                              <input type="submit" name="submit" value="Submit" class="btn btn-primary">   
+                              </div>
+                          </div>
+
+                      </form>
+                   </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+  </body>
+</html>
